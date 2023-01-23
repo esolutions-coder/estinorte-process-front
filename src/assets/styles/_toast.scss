@@ -1,0 +1,33 @@
+@use 'colors';
+
+.toastNest {
+    position: fixed;
+    right: 1rem;
+    bottom: 0;
+
+}
+
+.toast{
+    position: relative;
+    right: -400px;
+    border-radius: 0.5rem;
+    transition: ease 0.5s;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    margin-bottom: 12px;
+    .toast__header{
+        padding: 0.5rem 1rem;
+        border-bottom: solid 0.5px colors.$outline;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .toast__body{
+        padding: 1rem 1rem;
+    }
+
+    &.active{
+        right: 0;
+        transition: ease 0.5s;
+    }
+}

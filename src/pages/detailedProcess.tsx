@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { dataSource } from "../api/datasources";
 import { postDataWithPayLoad } from "../api/fetchData";
@@ -7,17 +7,24 @@ import FloatinButton from "../components/floating_button";
 import Layout from "../components/layout";
 import Modal from "../components/modal";
 import useItems from "../customHooks/useItems";
+import useProcessById from "../customHooks/useProcessById";
 
-export default function Procesos() {
+export default function DetailedProcess() {
   //ESTADO PARA INFORMACION DE UN ITEM
   const [newItemInfo, setNewItemInfo] = useState(item_mock_noid)
-
+  
   let PROCESS_ID: string = "SIN_ASIGNAR";
+
   const [modalState, setModalState] = useState(false);
+  const [acumulado, setAcumulado] = useState(0);
+
   const { process_id } = useParams();
+  
   if (process_id) {
     PROCESS_ID = process_id;
   }
+  const {processInfo} = useProcessById(PROCESS_ID)
+
   const { itemsList, updateItems } = useItems(PROCESS_ID);
 
 
@@ -40,7 +47,7 @@ export default function Procesos() {
     evt.preventDefault();
     newItemInfo.item = `${itemsList.length + 1}`
     newItemInfo.date = Date()
-    console.log(newItemInfo.date)
+    
     newItemInfo.parent_process = PROCESS_ID
     newItemInfo.ticket_picture = "noimage.png"
     const itemInfoForm = new FormData()
@@ -55,13 +62,43 @@ export default function Procesos() {
     }
   }
 
+  useEffect(()=>{
+    const weights = itemsList.map(item=>item.weight)
+    const totalWeight = weights.reduce((acc: number, current: number)=>acc+current,0);
+    setAcumulado(totalWeight)
+  },[itemsList])
+
+  let tableBody:JSX.Element[] | JSX.Element = <></>
+  if(itemsList.length === 0){
+    tableBody = (
+      <tr>
+        <td colSpan={10}>NO HAY ELEMENTOS EN ESTE PROCESO</td>
+      </tr>
+    )
+  }else{
+    tableBody = itemsList.map((item) => {
+      return (
+        <tr key={item.item}>
+          <td>{item.item}</td>
+          <td>{item.date}</td>
+          <td>{item.plate}</td>
+          <td>{item.ticket}</td>
+          <td>{item.inspector_house}</td>
+          <td>{item.weight}</td>
+          <td>{item.ticket_picture}</td>
+          <td>{item.product}</td>
+          <td>{item.bl}</td>
+          <td>{item.observation}</td>
+        </tr>
+      );
+    })
+  }
 
   return (
     <Layout>
       <div className="button_actions" onClick={() => setModalState(true)}>
         <FloatinButton />
       </div>
-
       <Modal
         setModalState={setModalState}
         modalState={modalState}
@@ -116,16 +153,15 @@ export default function Procesos() {
         </form>
 
       </Modal>
-
       <div className="process_info_container my-sm-12">
         <table className="operation_info_header">
           <tbody>
             <tr>
               <td colSpan={3} rowSpan={2}>
-                <h4>MN: ECKERT OLDENDORFF-1</h4>
+                <h4>MN: {processInfo.moto_nave}</h4>
               </td>
               <td colSpan={3}>OPERACIÓN</td>
-              <td colSpan={4}>FECHA INICIO: 12 ENERO 2023</td>
+              <td colSpan={4}>FECHA INICIO: {new Date(processInfo.start_date).toLocaleDateString()}</td>
             </tr>
             <tr>
               <td colSpan={3}>RECIBO</td>
@@ -139,8 +175,8 @@ export default function Procesos() {
               </td>
             </tr>
             <tr>
-              <td colSpan={2}>185</td>
-              <td>297521</td>
+              <td colSpan={2}>{itemsList.length}</td>
+              <td>{acumulado}</td>
             </tr>
           </tbody>
         </table>
@@ -162,22 +198,7 @@ export default function Procesos() {
             </tr>
           </thead>
           <tbody>
-            {itemsList.map((item) => {
-              return (
-                <tr key={item.item}>
-                  <td>{item.item}</td>
-                  <td>{item.date}</td>
-                  <td>{item.plate}</td>
-                  <td>{item.ticket}</td>
-                  <td>{item.inspector_house}</td>
-                  <td>{item.weight}</td>
-                  <td>{item.ticket_picture}</td>
-                  <td>{item.product}</td>
-                  <td>{item.bl}</td>
-                  <td>{item.observation}</td>
-                </tr>
-              );
-            })}
+            {tableBody}
           </tbody>
         </table>
       </div>

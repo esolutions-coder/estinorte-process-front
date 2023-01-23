@@ -5,7 +5,9 @@ declare module '*.jpg';
 interface EstinorteProcess {
     parent_center:string,
     moto_nave:string,
-    start_date:Date,
+    start_date:string | Date,
+    name:string
+    code:string
 }
 
 interface DBEstinorteProcess extends EstinorteProcess {
@@ -28,7 +30,8 @@ interface ItemEstinorte {
 
 interface Centers {
     name: string,
-    child_ids: string[]
+    parentCenter: string,
+    isParent: boolean
 }
 
 interface DBCenters extends Centers {
@@ -38,3 +41,16 @@ interface DBCenters extends Centers {
 interface DBItemEstinorte extends ItemEstinorte {
     _id: string
 }
+
+//Toast
+interface ToastProps {
+    name: string;
+    description: string;
+    id: string;
+    theme:string
+  }
+  
+  type ToastFinal = {
+    toastNest: ToastProps[];
+    setToastNest: React.Dispatch<React.SetStateAction<ToastProps[]>>;
+  };
