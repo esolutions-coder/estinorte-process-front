@@ -50,7 +50,6 @@ export default function ProcessByCenter() {
    itemInfoForm.append("data", JSON.stringify(newProcessInfo))
    try{
      const saveProcess = await postDataWithPayLoad(`${dataSource}/create/process`, itemInfoForm)
-     console.log(saveProcess)
      updateProcessByParentInfo()
    }catch(err){
      console.log(err)

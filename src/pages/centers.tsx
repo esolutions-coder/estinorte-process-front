@@ -7,7 +7,7 @@ export default function Centers() {
   return (
     <Layout>
       <div className="grid col-sm-2 col-md-2 col-lg-4 justify__sm__center gap--12 justify__center">
-        {centersList.map(center=><StartCard name={center.name} icon="hub" link={`#/listar/centro/${center._id}/procesos`} key={center._id}/>)}
+        {centersList.map(center=><StartCard name={center.name} icon="hub" link={`/#/listar/centro/${center._id}/procesos`} key={center._id}/>)}
 
       </div>
     </Layout>
