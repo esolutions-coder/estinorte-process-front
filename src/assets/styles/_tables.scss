@@ -1,0 +1,138 @@
+@use 'colors';
+
+.responsive_table_container{
+    width: 100%;
+    overflow-x: auto;
+    max-height: 80vh;
+}
+
+.inventary__table {
+    border-collapse: collapse;
+    width: 100%;
+    tr{
+        &:hover{
+            background-color: colors.$primary-container;
+            color: colors.$on-primary-container;
+            cursor: pointer;
+        }
+
+        &.active{
+            background-color: colors.$primary-container;
+            color: colors.$on-primary-container;
+        }
+    }
+
+    td {
+        padding: 0.75rem 0.5rem;
+        //Table head text styles
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+        letter-spacing: 0.1px;
+        text-transform: uppercase;
+        border: solid colors.$outline-50 1px;
+    }
+
+    thead {
+        td {
+            background-color: colors.$secondary-container;
+            color: colors.$on-secondary-container;
+        }
+    }
+
+    .element_options_container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .hidden{
+            display: none;
+        }
+
+        .element_name_container{
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+
+            .material-symbols-outlined{
+                font-size: 1.3rem;
+            }
+        }
+    
+        }
+}
+
+.table__pagination__container {
+    // display: flex;
+    display: none;
+    justify-content: space-around;
+
+    .table__pagination {
+        display: flex;
+
+        span {
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 50%;
+            padding: 0.25rem;
+
+            &:hover{
+                color: colors.$on-primary-container;
+                background-color: colors.$primary-container;
+                cursor: pointer;
+            }
+
+        }
+
+        ul {
+            padding-left: 0;
+
+            .active {
+                background-color: colors.$primary-container;
+                color: colors.$on-primary-container;
+            }
+
+            li {
+                list-style: none;
+                display: inline;
+                padding: 0.75rem;
+
+                //pagination font
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+
+                //spacing
+                margin: 0 0.5rem;
+
+                &:hover{
+                    color: colors.$on-primary-container;
+                    background-color: colors.$primary-container-50;
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+
+}
+
+.operation_info_header{
+    border-collapse: collapse;
+    width: 100%;
+    td {
+        padding: 0.75rem 0.5rem;
+        //Table head text styles
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+        letter-spacing: 0.1px;
+        text-transform: uppercase;
+        border: solid colors.$outline-50 1px;
+    }
+}

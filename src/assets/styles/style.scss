@@ -1,0 +1,60 @@
+@use 'colors';
+@use 'navbar';
+@use 'fonts';
+@use 'grid';
+@use 'cards';
+@use 'pills';
+@use 'display';
+@use 'tables';
+@use 'buttons';
+@use 'forms';
+@use 'mediaprint';
+@use 'modals';
+
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  margin: 0;
+  background-color: colors.$background;
+}
+
+.border{
+  border: solid colors.$outline 1px;
+}
+
+.border__radius__8{
+  border-radius: 0.5rem;
+}
+
+//Equipments --> contain search and tabel
+.col-start-1{
+  grid-column-start: 1;
+}
+
+.col-start-3{
+  grid-column-start: 3;
+}
+
+.col-span-1{
+  grid-column-end: span 1;
+}
+
+.col-span-2{
+  grid-column-end: span 2;
+}
+
+.no_select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.hide_element{
+  display: none !important;
+}
+

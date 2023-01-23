@@ -1,0 +1,17 @@
+.pill__icon{
+    display: flex;
+    align-items: center;
+}
+
+.pill__name{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.pill{
+    transition: 0.2s ease-in-out;
+}
+
+.pill_title{
+    font-size: 1.2rem;
+}

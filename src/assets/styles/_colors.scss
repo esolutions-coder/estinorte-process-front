@@ -1,0 +1,71 @@
+//Color definition
+$primary: #336948;
+$primary-50: #FFFFFF80;
+$on-primary: #FFFFFF;
+
+$tertiary: #4A6269;
+$on-tertiary: #FFFFFF;
+
+//Color definition
+$primary-container: #B6F0C6;
+$primary-container-50: #b6f0c680;
+$on-primary-container: #00210F;
+
+$secondary-container: #D8E6D9;
+$on-secondary-container: #131E16;
+
+$tertiary-container: #CDE7EF;
+$on-tertiary-container: #051F25;
+
+$red: red;
+$background: #FDFCF9;
+$on-background: #1A1C1A;
+$outline: #747873;
+$outline-50: rgba(116, 120, 115, 0.5);
+
+$error: #BA1A1A;
+$error-container: #FFDAD6;
+$on-error-container: #410002;
+
+.primary_theme{
+    background-color: $primary-container;
+    color: $on-primary-container;
+
+    &:hover{
+        background-color: #a1d1ae;
+        color: #003819
+    }
+}
+
+.original_theme{
+    background-color: $primary;
+    color: $on-primary;
+}
+
+.bg_white{
+    background-color: white;
+    color: black;
+}
+
+.tertiary_theme{
+    background-color: $tertiary;
+    color: $on-tertiary;
+}
+
+.primary_pressed_theme{
+    background-color: $primary;
+    color: $on-primary;
+}
+
+.error_theme{
+    background-color: $error-container;
+    color: $on-error-container;
+}
+
+.orange{
+    color: orangered;
+}
+
+.green{
+    color: green;
+}

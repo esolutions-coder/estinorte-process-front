@@ -1,0 +1,167 @@
+//Base 4 grid
+$paddings: 14;
+$cols: 12;
+
+//Useful mixins
+@mixin gap-screen-axis($prop1, $prop2, $propName, $screenSize) {
+    @for $i from 1 through $paddings {
+        .#{$propName}-#{$screenSize}-#{$i*4} {
+            #{$prop1}: #{$i*0.25rem};
+            #{$prop2}: #{$i*0.25rem}
+        }
+    }
+}
+
+@mixin grid-cols($screenSize) {
+    @for $i from 1 through $cols {
+        .col-#{$screenSize}-#{$i} {
+            grid-template-columns: repeat(#{$i}, 1fr);
+        }
+    }
+}
+
+//Single prop mixin
+@mixin singleProp($count, $className, $propName, $size) {
+    @for $i from 1 through $count {
+        .#{$className}__#{$size}__#{$i*4}{
+            #{$propName}: #{$i*0.25rem}
+        }
+    }
+}
+@include singleProp(12, mb, margin-bottom, sm);
+@include singleProp(12, mt, margin-top, sm);
+
+//Defining default styles
+
+@include gap-screen-axis(padding-left, padding-right, px, "");
+@include gap-screen-axis(padding-top, padding-bottom, py, "");
+@include gap-screen-axis(margin-left, margin-right, mx, "");
+@include gap-screen-axis(margin-top, margin-bottom, my, "");
+
+
+.grid {
+    display: grid;
+}
+
+.grid-auto-flow-colum {
+    grid-auto-flow: column;
+}
+
+.gap--8 {
+    gap: 0.5rem;
+}
+
+.gap--12 {
+    gap: 0.75rem;
+}
+
+.gap--24 {
+    gap: 1.5rem;
+}
+
+.py--0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.justify__center{
+    justify-items: center;
+}
+
+
+@media (min-width: 599px) {
+    @include gap-screen-axis(padding-left, padding-right, px, sm);
+    @include gap-screen-axis(padding-top, padding-bottom, py, sm);
+    @include gap-screen-axis(margin-left, margin-right, mx, sm);
+    @include gap-screen-axis(margin-top, margin-bottom, my, sm);
+
+    .justify__sm__center{
+        justify-items: center;
+    }
+    
+    .span__sm__1 {
+        grid-column-start: span 1;
+    }
+
+    .span__sm__2 {
+        grid-column-start: span 2;
+    }
+
+    .col-sm-1 {
+        grid-template-columns: 1fr;
+    }
+
+    .col-sm-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .col-sm-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .col-sm-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .gap-sm-8 {
+        gap: 0.5rem;
+    }
+
+    .gap-sm-12 {
+        gap: 0.75rem;
+    }
+
+    .gap-sm-24 {
+        gap: 1.5rem;
+    }
+
+}
+
+@media (min-width: 904px) {
+    @include gap-screen-axis(padding-left, padding-right, px, md);
+    @include gap-screen-axis(padding-top, padding-bottom, py, md);
+    @include gap-screen-axis(margin-left, margin-right, mx, md);
+    @include gap-screen-axis(margin-top, margin-bottom, my, md);
+
+    .span__md__1 {
+        grid-column-start: span 1;
+    }
+
+    .span__md__2 {
+        grid-column-start: span 2;
+    }
+    @include grid-cols(md);
+
+    .gap-md-8 {
+        gap: 0.5rem;
+    }
+
+    .gap-md-12 {
+        gap: 0.75rem;
+    }
+
+    .gap-md-24 {
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1239px) {
+    .span__lg__1 {
+        grid-column-start: span 1;
+    }
+
+    .span__lg__2 {
+        grid-column-start: span 2;
+    }
+
+    @include gap-screen-axis(padding-left, padding-right, px, lg);
+    @include gap-screen-axis(padding-top, padding-bottom, py, lg);
+    @include gap-screen-axis(margin-left, margin-right, mx, lg);
+    @include gap-screen-axis(margin-top, margin-bottom, my, lg);
+    @include grid-cols(lg);
+}

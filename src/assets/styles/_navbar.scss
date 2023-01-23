@@ -1,0 +1,122 @@
+@use 'colors';
+
+.inventarios__topnav{
+    //Spacing
+    padding: 1.5rem 2rem;
+}
+
+.top__section{
+    //display options
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    //top nav right section
+    .userMenu{
+        position: relative;
+        cursor: pointer;
+    .userMenu_options_container{
+        padding-left: 0;
+        background-color: colors.$background;
+        border-radius: 4px;
+        border: solid 0.5px colors.$outline;
+        position: absolute;
+        width: 150px;
+        right: 0;
+        li{
+            list-style: none;
+            .userMenu_item{
+                display: block;
+                padding: 0.25rem 0.5rem;
+                display: flex;
+                text-decoration: none;
+                align-items: center;
+                gap: 0.75rem;
+                color: colors.$on-background;
+                .material-symbols-outlined{
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+    .right{
+        display: none;
+    }
+    .mobile__menu{
+        margin-top: auto;
+        margin-bottom: auto;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+    .userImage__topnav{
+        //display options
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+    }
+
+    //nav bottom
+    border-bottom: 1px solid colors.$outline-50;
+}
+
+.estinorte_nav_menu{
+    padding-left: 0;
+    display: flex;
+    li{
+        list-style: none;
+        margin-left: 0.25rem;
+        a{
+            text-decoration: none;
+            color: colors.$primary;
+            padding: 0.75rem 1rem;
+            font-family: "Roboto";
+            border-radius: 0.25rem;
+            transition: all 0.25s ease;
+            display: block;
+            &.active{
+                background-color: colors.$primary;
+                color: colors.$on-primary;
+            }
+            
+            &:hover{
+                background-color: colors.$primary;
+                color: colors.$on-primary;
+                transition: all 0.25s ease;
+            }
+        }
+    }
+}
+
+
+.navigation_button{
+    .nav_button_container span{
+        border-radius: 50%;
+        background-color: colors.$primary;
+        color: colors.$on-primary;
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 599px) {
+    .top__section{
+        .right{
+            display: none;
+        }
+    }
+}
+@media (min-width: 904px) {
+    .top__section{
+        .right{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .mobile__menu{
+            display: none;
+        }
+    }
+}

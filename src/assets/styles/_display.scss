@@ -1,0 +1,75 @@
+$gapsNum:12;
+
+.flex{
+    display: flex;
+}
+
+.flex__column{
+    flex-direction: column;
+}
+
+.flex__row{
+    flex-direction: row;
+}
+
+.space__between{
+    justify-content: space-between;
+}
+
+.full_width{
+    width: 100%;
+}
+
+.flex_align_center{
+    align-items: center;
+}
+
+.elements__container{
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+@mixin gaps($size) {
+    @for $i from 0 to $gapsNum {
+        .gap-#{$size}-#{$i*4} {gap: $i*0.25rem};
+    }
+}
+
+@mixin marginNpaddings($prop, $size, $cssName) {
+    @for $i from 0 to $gapsNum {
+        .#{$prop}-#{$size}-#{$i*4} {
+            #{$cssName}: $i*0.25rem
+        };
+    }
+}
+
+@media (min-width: 599px) {
+    @include gaps(sm);
+    .flex__column__sm{
+        flex-direction: column;
+    }
+    .flex__row__sm{
+        flex-direction: row;
+    }
+    @include marginNpaddings(mb, sm, margin-bottom)
+}
+
+@media (min-width: 904px){
+    @include gaps(md);
+    .flex__column__md{
+        flex-direction: column;
+    }
+    .flex__row__md{
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1239px){
+    @include gaps(lg);
+    .flex__column__lg{
+        flex-direction: column;
+    }
+    .flex__row__lg{
+        flex-direction: row;
+    }
+}

@@ -1,0 +1,43 @@
+button{
+    display: flex;
+    border-radius: 100vw;
+    gap: 0.5rem;
+    border: none;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn{
+    border-radius: 100vw;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn__paddings{
+    padding: 0.75rem 2rem;
+}
+
+.btn__small__paddings{
+    padding: 0.25rem 1rem;
+}
+
+.button_type_icon{
+    cursor: pointer;
+}
+
+.floating_container{
+    position: fixed;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    span{
+        display: flex;
+        font-size: 2rem;
+    }
+}

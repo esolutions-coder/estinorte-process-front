@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Inicio",
+    "pathname": "/",
+    "active": false
+  },
+  {
+    "name": "Edición de activos",
+    "pathname": "/controlPanel",
+    "active": false
+  },
+  {
+    "name": "Activos",
+    "pathname": "/elementsByCategory",
+    "active": false
+  },
+  {
+    "name": "Añadir Grupos y Subgrupos",
+    "pathname": "/addCategory",
+    "active": false
+  },
+  {
+    "name": "Centros de costos",
+    "pathname": "/myCenters",
+    "active": false
+  }
+]
